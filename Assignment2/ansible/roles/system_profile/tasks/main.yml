@@ -1,0 +1,11 @@
+---
+# tasks file for system_profile
+- name: adding two lines to profile
+  blockinfile:
+    path: /etc/profile
+    insertafter: EOF
+    backup: yes
+    state: present
+    block: |
+      "#This is the test block added by ansible.... N01516628"
+      export TMOUT=1800

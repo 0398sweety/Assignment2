@@ -1,0 +1,9 @@
+---
+- name: This play runs the roles of assignment 2
+  hosts: linux
+  become: true
+  roles:
+    - datadisk
+    - system_profile
+    - users
+    - webserver

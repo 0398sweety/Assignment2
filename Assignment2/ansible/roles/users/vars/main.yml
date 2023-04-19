@@ -1,0 +1,10 @@
+---
+# vars file for users
+userCreation:
+  - name: user1000
+    id: 1001
+  - name: user2000
+    id: 2001
+SSHGeneration:
+ - name: user1000
+ - name: user2000

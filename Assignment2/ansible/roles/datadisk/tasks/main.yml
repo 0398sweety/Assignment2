@@ -1,0 +1,22 @@
+---
+# tasks file for datadisk
+- name: Creating 4 and 5 GBS Partition
+  parted:
+    device: /dev/sdc
+    number: "{{ item.num }}"
+    state: present
+    part_start: "{{ item.part_start }}"
+    part_end: "{{ item.part_end }}"
+  loop: "{{ partitioncreation }}"
+- name: Formatting XFS and ext4 FileSystem
+  filesystem:
+    fstype: "{{ item.fstype }}"
+    dev: "{{ item.src }}"
+  loop: "{{ mountpartition }}"
+- name: Mounting the partition on part1 and part2
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.src }}"
+    state: mounted
+    fstype: "{{ item.fstype }}"
+  loop: "{{ mountpartition }}"

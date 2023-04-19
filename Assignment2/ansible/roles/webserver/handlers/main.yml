@@ -1,0 +1,7 @@
+---
+# handlers file for webserver
+- name: start_server
+  systemd:
+    name: httpd
+    state: restarted
+    enabled: True

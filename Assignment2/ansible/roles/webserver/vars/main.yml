@@ -1,0 +1,7 @@
+---
+# vars file for webserver
+filepath:
+  - path: ../files/vm1.html
+    hostname: u-vm-6628-dns-1
+  - path: ../files/vm2.html
+    hostname: u-vm-6628-dns-2

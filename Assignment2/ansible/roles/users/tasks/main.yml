@@ -1,0 +1,21 @@
+---
+# tasks file for users
+- name: Group Creation
+  group:
+    name: cloudadmins
+    gid: 3000
+    state: present
+- name: User Creation
+  user:
+    name: "{{ item.name }}"
+    uid: "{{ item.id }}"
+    state: present
+    groups: cloudadmins,wheel
+    generate_ssh_key: yes
+  loop: "{{ userCreation }}"
+- name: SSH Keys Creation
+  authorized_key:
+    user: "{{ item.name }}"
+    state: present
+    key: "{{ lookup('file', 'C:\\Users\\varun\\.ssh\\my_ssh_keys\\id_rsa.pub') }}"
+  loop: "{{ SSHGeneration }}"

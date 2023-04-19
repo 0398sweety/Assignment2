@@ -1,0 +1,11 @@
+[linux]
+#n01516628-c-vm-dns-1
+#n01516628-c-vm-dns-2
+u-vm-6628-dns-1
+u-vm-6628-dns-2
+
+[linux:vars]
+ansible_user = sweety-n01516628
+ansible_password = "Sweety@6628"
+host_domain=eastasia.cloudapp.azure.com
+ansible_host="{{inventory_hostname}}.{{host_domain}}"

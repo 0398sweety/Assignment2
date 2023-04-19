@@ -1,0 +1,15 @@
+---
+# tasks file for webserver
+- name: installing apache server
+  yum:
+    name: httpd
+    state: present
+- name: uploading file to managed node
+  copy:
+    src: "{{ item.path }}"
+    dest: /var/www/html/index.html
+    group: cloudadmins
+    mode: "0444"
+  loop: "{{ filepath }}"
+  when: inventory_hostname== item.hostname
+  notify: start_server
